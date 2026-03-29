@@ -9,17 +9,27 @@ export default async function HomePage() {
 
   return (
     <div className="space-y-12 pb-20">
-      <section className="text-center py-16 space-y-6">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-bold animate-fade-in">
-          <Star size={16} className="fill-current" />
-          <span>学びは繋がり、知識は輪になる</span>
+      <section className="text-center py-20 pb-16 space-y-10 relative overflow-hidden">
+        {/* Background decorative elements */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-10" />
+        
+        <div className="space-y-2">
+          <h1 className="text-7xl md:text-[10rem] font-black tracking-tighter bg-gradient-to-b from-foreground to-foreground/50 bg-clip-text text-transparent animate-title leading-none">
+            WANINARU
+          </h1>
+          <p className="text-sm md:text-base font-bold tracking-[0.5em] text-primary uppercase animate-fade-in-up opacity-0 [animation-delay:0.5s]">
+            学びは繋がり、知識は輪になる
+          </p>
         </div>
-        <h1 className="text-5xl md:text-6xl font-black tracking-tight bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent pb-2 leading-tight">
-          1人の学びが、みんなの力に。
-        </h1>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-medium">
-          知識が繋がり、循環し、挑戦を支える学習特化型SNSプラットフォーム
-        </p>
+
+        <div className="space-y-4 max-w-3xl mx-auto px-4 animate-fade-in-up opacity-0 [animation-delay:0.8s]">
+          <h2 className="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">
+            1人の学びが、みんなの力に。
+          </h2>
+          <p className="text-xl text-muted-foreground font-medium">
+            知識が繋がり、循環し、挑戦を支える学習特化型SNSプラットフォーム
+          </p>
+        </div>
       </section>
 
       {/* Concept Section */}
