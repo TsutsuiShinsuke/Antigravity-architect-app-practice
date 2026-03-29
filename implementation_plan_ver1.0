@@ -1,0 +1,64 @@
+# 資格学習者掲示板アプリ 実装計画書 (PoC版)
+
+## 1. 概要
+本プロジェクトでは、資格試験の学習者が問題ごとに解説や意見を交換できる掲示板アプリを**最小コスト（開発費・運用費 $0）**でPoC（概念実証）として開発します。
+
+## 2. 技術スタックの選定理由（低コスト・スピード重視）
+運用コストを完全に抑えるため、無料枠が充実したサービスを選定します。
+
+- **Next.js (App Router)**: Vercel の Hobby プラン（無料）でホスティング可能。
+- **Supabase (Free Tier)**: 
+  - **Database**: PostgreSQL (500MB) まで無料。
+  - **Auth**: 5万 MAU まで無料。Email/Password認証を即座に利用可能。
+  - **API**: 自動生成される REST/GraphQL API を使用し、バックエンドの実装コストをゼロにします。
+- **Tailwind CSS & Lucide React**: デザインシステムを自作せず、標準的なツールで高速にプロンプトベースの開発を行います。
+- **Zustand**: 状態管理の学習・実装コストが最も低いため。
+- **Vitest**: テストの実行速度が速く、初期設定が容易。
+
+## 3. ディレクトリ構造案 (シンプル構成)
+PoCとしてのスピードを優先しつつ、将来の拡張性を維持した構成です。
+
+```
+src/
+  ├── app/                  # ルーティング (Server Components 活用)
+  ├── components/           # 共通UI (Radix UI / Tailwind コンポーネント)
+  ├── features/             # 機能単位 (auth, questions, comments)
+  ├── lib/                  # supabase, utils
+  └── types/                # TypeScript 型定義
+```
+
+## 4. データモデル定義 (最小構成)
+
+### `profiles` (ユーザー)
+- id (uuid, PK), username (text), reputation (int, default 0)
+
+### `questions` (試験問題)
+- id (uuid, PK), title (text), content (text), answer (text), explanation (text)
+
+### `comments` (コメント)
+- id (uuid, PK), question_id (FK), user_id (FK), content (text), created_at
+
+### `votes` (評価)
+- id (uuid, PK), comment_id (FK), user_id (FK), vote_type ('good' | 'bad')
+
+## 5. 状態管理・データ取得の方針
+- **サーバーデータ**: Supabase クライアントから直接フェッチ（PoCでは複雑なキャッシュ管理を省き、必要に応じて `useSWR` や `TanStack Query` の導入を検討しますが、まずは標準の `fetch` や Supabase SDK で対応）。
+- **認証**: Supabase 付属のライブラリで完結。
+
+## 6. 実装ルール
+- **any禁止**: 型安全性は PoC でも維持し、バグを未然に防ぎます。
+- **JSDoc**: 最小限、関数やコンポーネントの役割を記載。
+- **テスト**: 複雑なレピュテーション計算ロジックのみに限定。
+
+## 7. 検証計画
+
+### 自動テスト
+- レピュテーション加減算ロジックのユニットテスト。
+
+### 手動検証
+- Supabase ダッシュボードでのデータ更新確認。
+- Vercel プレビュー環境でのログイン・投稿動作確認。
+
+---
+> [!NOTE]
+> この構成により、月額のインフラコストは **$0** で運用可能です。
