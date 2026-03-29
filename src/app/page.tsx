@@ -12,14 +12,33 @@ export default async function HomePage() {
       <section className="text-center py-16 space-y-6">
         <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-bold animate-fade-in">
           <Star size={16} className="fill-current" />
-          <span>PoC v0.2: Supabase 統合完了</span>
+          <span>学びは繋がり、知識は輪になる</span>
         </div>
-        <h1 className="text-5xl md:text-6xl font-black tracking-tight bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent pb-2">
-          合格への最短距離を、<br />みんなで創る。
+        <h1 className="text-5xl md:text-6xl font-black tracking-tight bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent pb-2 leading-tight">
+          1人の学びが、みんなの力に。
         </h1>
         <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-medium">
-          問題一つひとつに対して、磨かれた解法と解説を。学習者同士のインサイトがあなたの実力を引き上げます。
+          知識が繋がり、循環し、挑戦を支える学習特化型SNSプラットフォーム
         </p>
+      </section>
+
+      {/* Concept Section */}
+      <section className="max-w-4xl mx-auto p-10 bg-secondary/20 backdrop-blur-md rounded-[2.5rem] border border-border/50 space-y-6 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16" />
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-accent/5 rounded-full blur-3xl -ml-16 -mb-16" />
+        
+        <h2 className="text-2xl font-black text-primary">ABOUT WANINARU</h2>
+        <div className="space-y-4 text-lg leading-relaxed text-foreground/80 font-medium">
+          <p>
+            WANINARUは、学習を「ひとりで頑張るもの」から、「みんなで前に進むもの」へ変えるために命名しました。
+          </p>
+          <p>
+            質問、回答、解説、記録といった一つひとつの行動が、誰かの理解を助け、次の挑戦者の支えになる。私たちは、知識が循環し、投稿が資産となり、学び合いが継続を生む場をつくります。
+          </p>
+          <p className="font-bold text-foreground">
+            WANINARUには、個人の努力の集積を集団の力に変える意思を込めています。
+          </p>
+        </div>
       </section>
 
       {/* Quiz Selection Section */}

@@ -39,7 +39,7 @@ export default function Header() {
           <div className="p-2 bg-primary rounded-lg text-primary-foreground group-hover:scale-110 transition-transform">
             <BookOpen size={20} />
           </div>
-          <span className="font-bold text-xl tracking-tight hidden sm:inline-block">資格学習掲示板</span>
+          <span className="font-bold text-xl tracking-tight hidden sm:inline-block">WANINARU</span>
         </Link>
 
         <nav className="flex items-center gap-6">
